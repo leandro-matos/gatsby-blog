@@ -1,13 +1,27 @@
+const path = require('path'); require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
+const queries = require('./src/utils/algolia_queries')
+
 module.exports = {
   siteMetadata: {
-    title: `My Blog`,
-    position: `Systems Administrator`,
-    description: `A blog about Site Reliability Engineering and other cool stuff`,
+    title: `Leandro de Matos`,
+    position: `Administrador de Sistemas`,
+    description: `Aprimorando cada vez mais habilidades em programação, Cloud Computing e o mundo Devops.
+    #Keep Exploring!!`,
     author: `@leandro-matos`,
   },
   plugins: [
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
+    // Needs to be the first to work with gatsby-remark0images
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `uploads`,
+        path: `${__dirname}/static/assets/img`,
+      },
+    },
+
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -15,8 +29,50 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `posts`,
+        path: `${__dirname}/posts`,
+      },
+    },
+
+    {
+      resolve: `gatsby-transformer-remark`,
+      options: {
+        plugins: [
+          {
+            resolve: "gatsby-remark-relative-images",
+            options: {
+              name: "uploads"
+            }
+          },
+          {
+            resolve: "gatsby-remark-images",
+            options: {
+              maxWidth: 460,
+              linkImagesToOriginal: false,
+            },
+          },
+          `gatsby-remark-lazy-load`,
+          `gatsby-remark-prismjs`,
+        ],
+      },
+    },
+
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    {
+      resolve: `gatsby-plugin-algolia-search`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
+        queries,
+        chunkSize: 10000, // default: 1000
+        enablePartialUpdates: true,
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
