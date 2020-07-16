@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import getThemeColor from "../../utils/getThemeColor"
 
 import { Home } from "@styled-icons/boxicons-regular/Home"
 import { SearchAlt2 as Search } from "@styled-icons/boxicons-regular/SearchAlt2"
@@ -13,7 +14,7 @@ const MenuBar = () => {
   const [theme, setTheme] = useState(null)
   const [display, setDisplay] = useState(null)
 
-  const isDarkMode = theme === 'dark'
+  const isDarkMode = theme === "dark"
   const isListMode = display === "list"
 
   useEffect(() => {
@@ -25,24 +26,40 @@ const MenuBar = () => {
   }, [])
 
   return (
-      <S.MenuBarWrapper>
+    <S.MenuBarWrapper>
       <S.MenuBarGroup>
-        <S.MenuBarLink to="/" title="Voltar para o Ínicio">
+        <S.MenuBarLink
+          to="/"
+          cover
+          direction="right"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Voltar para Home"
+        >
           <S.MenuBarItem>
             <Home />
           </S.MenuBarItem>
         </S.MenuBarLink>
-        <S.MenuBarLink to="/search/" title="Pesquisar">
+        <S.MenuBarLink
+          to="/search/"
+          cover
+          direction="right"
+          bg={getThemeColor()}
+          duration={0.6}
+          title="Pesquisar"
+        >
           <S.MenuBarItem>
             <Search />
           </S.MenuBarItem>
         </S.MenuBarLink>
       </S.MenuBarGroup>
       <S.MenuBarGroup>
-        <S.MenuBarItem title="Mudar o tema" onClick={() => {
-          window.__setPreferredTheme(isDarkMode ? 'light' : 'dark')
-        }}
-        className={theme}
+        <S.MenuBarItem
+          title="Mudar o tema"
+          onClick={() => {
+            window.__setPreferredTheme(isDarkMode ? "light" : "dark")
+          }}
+          className={theme}
         >
           <Light />
         </S.MenuBarItem>
@@ -55,7 +72,10 @@ const MenuBar = () => {
         >
           {isListMode ? <Grid /> : <List />}
         </S.MenuBarItem>
-        <S.MenuBarItem title="Ir para o Topo da página">
+        <S.MenuBarItem 
+        title="Ir para o Topo da página"
+        onClick={() => window.scroll({ top: 0, behavior: "smooth" })}
+        >
           <Arrow />
         </S.MenuBarItem>
       </S.MenuBarGroup>

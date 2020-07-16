@@ -6,11 +6,12 @@ module.exports = {
   siteMetadata: {
     title: `Leandro de Matos`,
     position: `Administrador de Sistemas`,
-    description: `Aprimorando cada vez mais habilidades em programação, Cloud Computing e o mundo Devops.
-    #Keep Exploring!!`,
+    description: `Um blog sobre Devops, Cloud e História :)`,
     author: `@leandro-matos`,
+    siteUrl: `https://leandrodematos.netlify.com`,
   },
   plugins: [
+    `gatsby-plugin-transition-link`,
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-react-helmet`,
     // Needs to be the first to work with gatsby-remark0images
@@ -76,17 +77,18 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Leandro Matos`,
+        short_name: `Leandro Matos`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#16202c`,
+        theme_color: `#16202c`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/l.png`, // This path is relative to the root of the site.
       },
     },
+    `gatsby-plugin-sitemap`,
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
+    `gatsby-plugin-offline`,
   ],
 }

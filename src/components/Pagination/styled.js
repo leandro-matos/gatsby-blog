@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import media from "styled-media-query"
+import AniLink from "gatsby-plugin-transition-link/AniLink"
 
 export const PaginationWrapper = styled.section`
     align-items: center;
