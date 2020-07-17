@@ -8,7 +8,7 @@ module.exports = {
     position: `Administrador de Sistemas`,
     description: `Um blog sobre Devops, Cloud e História :)`,
     author: `@leandro-matos`,
-    siteUrl: `https://leandrodematos.netlify.com`,
+    siteUrl: `https://leandromatos.netlify.app`,
   },
   plugins: [
     `gatsby-plugin-transition-link`,
