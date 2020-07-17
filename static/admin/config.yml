@@ -2,7 +2,7 @@ backend:
   name: github
   repo: leandro-matos/gatsby-blog
   branch: master
-  site_domain: leandromatos.netlify.app/
+  site_domain: leandromatos.netlify.app
 
 publish_mode: editorial_workflow
 media_folder: "static/assets/img"
