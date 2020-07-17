@@ -1,7 +1,6 @@
 ---
 title: Writing posts with Gatsby✍️
-description: Select the text to add formatting, headers or create links, or use
-  Markdown shortcuts to do the work for you - if that's your thing.
+description: Select the text to add formatting, headers or create links
 date: 2020-07-16 11:04:10
 thumbnail: writing-posts-with-ghost.jpg
 category: HIS
